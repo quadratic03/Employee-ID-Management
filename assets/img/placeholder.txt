@@ -1,0 +1,5 @@
+This file serves as a placeholder. In a real implementation, this would be a JPEG or PNG image file that will be used as a default placeholder for employee photos when no photo is uploaded.
+
+For implementation, replace this text file with an actual image file named 'placeholder.jpg' in this same directory.
+
+Recommended dimensions for the placeholder image: 150x180 pixels. 
