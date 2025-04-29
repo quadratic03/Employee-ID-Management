@@ -52,11 +52,11 @@ A PHP/MySQL-based system for managing and verifying digital certificates, docume
 ### System Administrators
 | ID | Username | Password | Role | Email | Status |
 |----|----------|----------|------|-------|--------|
-| 1 | admin1 | *encrypted* | System Administrator 1 | admin1@example.com | active |
-| 2 | admin2 | *encrypted* | System Administrator 2 | admin2@example.com | active |
-| 3 | admin3 | *encrypted* | System Administrator 3 | admin3@example.com | active |
-| 4 | admin4 | admin123 | System Administrator 4 | admin4@example.com | active |
-| 5 | admin5 | *encrypted* | System Administrator 5 | admin5@example.com | active |
+| 1   | admin1 | admin123 | System Administrator 1 | admin1@example.com | active |
+| 2   | admin2 | admin123 | System Administrator 2 | admin2@example.com | active |
+| 3   | admin3 | admin123 | System Administrator 3 | admin3@example.com | active |
+| 4   | admin4 | admin123 | System Administrator 4 | admin4@example.com | active |
+| 5   | admin5 | admin123 | System Administrator 5 | admin5@example.com | active |
 
 **Note**: 
 - Most passwords are stored as encrypted hashes in the database for security.
