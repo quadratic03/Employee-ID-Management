@@ -57,6 +57,10 @@ $is_admin_logged_in = isset($_SESSION['user_id']);
         </div>
     </div>
 
+    <footer class="mt-5 text-center">
+        <p class="text-muted">Developed by Namoc &copy; <?php echo date('Y'); ?></p>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> 

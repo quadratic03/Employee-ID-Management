@@ -139,6 +139,7 @@ if (isset($_POST['login'])) {
             
             <div class="text-center mt-3">
                 <p class="small text-muted">Try logging in with: admin4 / admin123</p>
+                <p class="small text-muted mt-3">Developed by Namoc &copy; <?php echo date('Y'); ?></p>
             </div>
         </div>
     </div>

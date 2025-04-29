@@ -2,6 +2,8 @@
 
 A PHP/MySQL-based system for managing and verifying digital certificates, documents, and employee ID cards.
 
+![System Dashboard](assets/img/sample.png)
+
 ## Features
 
 ### Document Verification System
@@ -20,6 +22,7 @@ A PHP/MySQL-based system for managing and verifying digital certificates, docume
 - Photo upload and management with preview
 - QR code generation for verification and security
 - Support for landscape orientation ID cards
+- Advanced image viewer for photo examination and management
 
 ### Administration Features
 - Dashboard with key statistics
@@ -99,12 +102,16 @@ For security purposes, change all default passwords after installation.
    - Upload a photo (recommended size: passport photo dimensions)
    - The system will generate a unique ID number based on department
 
+   ![Add Employee Form](assets/img/1.png)
+
 2. **Generate & Print ID Card**
    - From the employee list, click on "Print ID" button
    - Select a template from the dropdown menu
    - Preview the ID card in the browser
    - Click the "Print ID Card" button to print
    - Follow the printing instructions for best results
+
+   ![ID Card Preview](assets/img/2.png)
 
 3. **ID Card Printing Instructions**
    - Use card stock paper for durability
@@ -114,10 +121,21 @@ For security purposes, change all default passwords after installation.
    - Use smallest possible margins or "no margins" option
    - Verify the printed card measures exactly 3.375 × 2.125 inches (standard ID size)
 
-4. **Verify an ID Card**
+4. **View Employee Photos**
+   - Access the image viewer by clicking on the employee photo thumbnail
+   - The image viewer allows for full-size viewing of employee photos
+   - Use the zoom controls to examine photo details
+   - Navigate between multiple employee photos using the arrow controls
+   - Download images directly from the viewer if needed
+
+   ![Image Viewer](assets/img/3.png)
+
+5. **Verify an ID Card**
    - Navigate to the public ID verification page
    - Enter the ID number or scan the QR code
    - View the employee status and details
+
+   ![ID Verification](assets/img/4.png)
 
 ## Customization
 
@@ -127,6 +145,8 @@ You can customize ID card templates by:
 2. Creating a new template or editing an existing one
 3. Using HTML for layout and CSS for styling
 4. Testing the template before applying it to employees
+
+![ID Card Templates](assets/img/screenshots/id-templates.png)
 
 Available placeholder tags for templates:
 - `{FULL_NAME}` - Employee's full name
@@ -140,6 +160,75 @@ Available placeholder tags for templates:
 
 ### System Branding
 Replace the logo file at `assets/img/logo.png` with your own logo.
+
+### Image Viewer
+The system includes an advanced image viewer with the following features:
+- **Full-screen Mode**: Examine photos in detail with full-screen display
+- **Zoom Controls**: Zoom in/out on images to verify details
+- **Navigation**: Browse through multiple employee photos with arrow controls
+- **Download Option**: Save images locally when needed
+- **Rotation**: Rotate images to correct orientation
+- **Mobile Support**: Responsive design works on all devices
+- **Crop Functionality**: Adjust photos to fit ID card requirements
+
+![Image Viewer Controls](assets/img/screenshots/image-viewer-controls.png)
+
+The image viewer can be accessed from:
+- Employee list view (thumbnail click)
+- Employee detail page
+- ID card preview screen
+- Photo management section
+
+#### Sample Image Display
+Here's how employee photos appear in the system:
+
+![Employee Photo Sample](assets/img/screenshots/employee-photo-sample.png)
+
+### Displaying Images in the System
+To display images properly within the system, use the following methods:
+
+#### 1. Displaying Employee Photos
+```php
+// Display employee photo with image viewer
+$photoPath = !empty($employee['photo']) ? '../' . $employee['photo'] : '../assets/img/placeholder.jpg';
+echo '<img src="' . $photoPath . '" class="employee-photo" alt="' . $employee['fullname'] . '" onclick="openImageViewer(this)">';
+```
+
+#### 2. Displaying Images in ID Cards
+```php
+// In ID card templates, use the placeholder:
+<img src="{PHOTO_PATH}" alt="Employee Photo" class="id-photo">
+
+// The system will automatically replace it with:
+<img src="../uploads/photos/employee123.jpg" alt="Employee Photo" class="id-photo">
+```
+
+#### 3. Using the Image Viewer API
+```javascript
+// Open the image viewer for a specific image
+function openImageViewer(imgElement) {
+    ImageViewer.show(imgElement.src, {
+        zoomable: true,
+        rotatable: true,
+        downloadable: true
+    });
+}
+
+// Open multiple images as a gallery
+function openGallery(employeeId) {
+    ImageViewer.showGallery(employeeId, {
+        startIndex: 0,
+        navigable: true
+    });
+}
+```
+
+#### 4. Image Paths Reference
+Common image paths in the system:
+- Employee photos: `../uploads/photos/[filename]`
+- System logos: `../assets/img/logo.png`
+- Default placeholders: `../assets/img/placeholder.jpg`
+- ID card templates: `../uploads/templates/[template_id]/background.jpg`
 
 ## Security Recommendations
 
